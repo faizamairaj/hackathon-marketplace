@@ -34,10 +34,14 @@ const Header = () => {
 
       {/* Icons */}
       <div className="flex gap-4 md:gap-6 items-center">
+        <Link href="/myaccount">
         <User className="cursor-pointer w-5 h-5 md:w-6 md:h-6" />
+        </Link>
         <Search className="cursor-pointer w-5 h-5 md:w-6 md:h-6" />
         <Heart className="cursor-pointer w-5 h-5 md:w-6 md:h-6" />
+        <Link href="/cart">
         <ShoppingCart className="cursor-pointer w-5 h-5 md:w-6 md:h-6" />
+        </Link>
       </div>
 
      

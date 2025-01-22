@@ -1,5 +1,7 @@
 import { client } from '@/sanity/lib/client'
 import { urlFor } from '@/sanity/lib/image'
+import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 async function  Shopnow ()  {
@@ -18,9 +20,11 @@ async function  Shopnow ()  {
       <div>
         {
             res.map((item:any)=>{
-            return(
-                <div>
-                     <img src={urlFor(item.productImage).url()} alt={item.title} width={300} height={300}/>
+            return( 
+                <div key={item.price}>
+                     <Link href={`/shopnow/${item.price}`}>
+                     <Image src={urlFor(item.productImage).url()} alt={item.title} width={300} height={300}></Image>
+                     </Link>
                     <h1>{item.title}</h1>
                     <p className='text-sm items-center'>{item.description}</p>
                     <p>{item.price}</p>
