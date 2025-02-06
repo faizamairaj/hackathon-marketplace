@@ -1,6 +1,9 @@
+
 import React from 'react'
 import {client} from "@/sanity/lib/client"
 import { urlFor } from '@/sanity/lib/image'
+import Link from 'next/link'
+import Image from 'next/image'
 
 async function ProDetail({params}:{params:{id:string}}) {
     
@@ -16,12 +19,22 @@ async function ProDetail({params}:{params:{id:string}}) {
 
           const item= data.find((item:any)=>item.price== Number(params.id))
   return (
-    <div >
-                   
-                    <h1>{item?.title}</h1>
-                    <p className='text-sm items-center'>{item?.description}</p>
-                    <p>{item?.price}</p>
-                    <p>{item?.tags}</p>
+    <div>
+        <div className='flex justify-center items-center'>
+                    <Link href={`/shopnow/${item.price}`}>
+                            <Image 
+                                src={urlFor(item?.productImage).url()} 
+                                alt={item.title} 
+                                width={300} 
+                                height={300} 
+                                className="w-[500px] h-[500px] object-cover"
+                            />
+                        </Link>
+                        </div>
+                    <h1 className='font-bold text-5xl text-center mt-6'>{item?.title}</h1>
+                    <p className='text-sm items-center  mt-6 ml-20 mr-20 '>{item?.description}</p>
+                    <p className='font-bold text-2xl ml-20 mr-20'>${item?.price}</p>
+                    <p className='ml-20 mr-20'>{item?.tags}</p>
                     <p>{item?.discountPercentage}</p>
                     <p>{item?.isNew}</p>
 
