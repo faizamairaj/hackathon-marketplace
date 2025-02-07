@@ -1,4 +1,3 @@
-
 import React from 'react'
 import {client} from "@/sanity/lib/client"
 import { urlFor } from '@/sanity/lib/image'
@@ -32,11 +31,11 @@ async function ProDetail({params}:{params:{id:string}}) {
                         </Link>
                         </div>
                     <h1 className='font-bold text-5xl text-center mt-6'>{item?.title}</h1>
-                    <p className='text-sm items-center  mt-6 ml-20 mr-20 '>{item?.description}</p>
+                    <p className='text-sm items-center ml-20 mr-20 mt-6 '>{item?.description}</p>
                     <p className='font-bold text-2xl ml-20 mr-20'>${item?.price}</p>
-                    <p className='ml-20 mr-20'>{item?.tags}</p>
-                    <p>{item?.discountPercentage}</p>
-                    <p>{item?.isNew}</p>
+                    <p className="text-xs text-gray-500 ml-20 mr-20 mt-1">{item?.tags ?.join(', ')}</p>
+                    <p  className="text-sm text-red-500 ml-20 mr-20 font-medium">{item?.discountPercentage}</p>
+                    <p className="text-sm text-red-500 ml-20 mr-20 font-medium">{item?.isNew}</p>
 
                 </div>
             )
